@@ -1,4 +1,4 @@
-import { same, window } from "../helpers/array";
+import { equal, window } from "../helpers/array";
 
 const testInput = `7 6 4 2 1
 1 2 7 8 9
@@ -12,11 +12,11 @@ function safe(report: number[]) {
 		window(report, 2).every(
 			([a, b]) => Math.abs(a - b) <= 3 && Math.abs(a - b) >= 1
 		) &&
-		(same(
+		(equal(
 			report,
 			[...report].sort((a, b) => a - b)
 		) ||
-			same(
+			equal(
 				report,
 				[...report].sort((a, b) => b - a)
 			))
