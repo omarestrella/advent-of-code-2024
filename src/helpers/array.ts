@@ -43,3 +43,10 @@ export function getDiagonal<T>(
 export function getMiddle<T>(arr: T[]): T {
 	return arr[Math.floor(arr.length / 2)];
 }
+
+export function distanceVector(
+	a: [number, number],
+	b: [number, number]
+): [number, number] {
+	return [Math.abs(b[0] - a[0]), Math.abs(b[1] - a[1])];
+}
