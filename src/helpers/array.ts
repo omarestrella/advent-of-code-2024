@@ -14,6 +14,21 @@ export function window<T>(arr: T[], size: number): T[][] {
 	return windows;
 }
 
+export function combinations<T>(arr: T[], size: number): T[][] {
+	if (size === 0) {
+		return [[]];
+	}
+
+	if (arr.length === 0) {
+		return [];
+	}
+
+	const [first, ...rest] = arr;
+	const withFirst = combinations(rest, size - 1).map((x) => [first, ...x]);
+	const withoutFirst = combinations(rest, size);
+	return [...withFirst, ...withoutFirst];
+}
+
 export function equal<T>(a: T[], b: T[]): boolean {
 	return a.length === b.length && a.every((x, i) => x === b[i]);
 }
@@ -48,5 +63,5 @@ export function distanceVector(
 	a: [number, number],
 	b: [number, number]
 ): [number, number] {
-	return [Math.abs(b[0] - a[0]), Math.abs(b[1] - a[1])];
+	return [b[0] - a[0], b[1] - a[1]];
 }
